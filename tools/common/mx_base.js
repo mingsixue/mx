@@ -43,7 +43,14 @@
       return newStr;
   }
 
-  // 金额格式化
+  /**
+   * [formatMoney 金额千分位格式化]
+   * @param  {Number|string} num [数值]
+   * @return {string}     [格式化后金额，千分位]
+   */
+  function formatMoney(num) {
+    return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, '$1,');
+  }
 
   /**
    * [formatBankcard 银行卡格式化]
@@ -51,22 +58,22 @@
    * @return {string}      [格式化后的银行卡号]
    */
   function formatBankcard(card) {
-  	card = card + '';
+    card = card + '';
 
-  	if (typeof card == 'string') {
-  		if (card.length === 16) {
-  			return card.replace(/([\d\*]{4})(?=[\*\d])/g, '$1 ');
-  		} else if (card.length === 19) {
-  			var i = card.lastIndexOf('*');
-  			var last = card.substr(i + 1, card.lenght);
-  			card = card.substr(0, i + 1);
-  			return card.replace(/([\d\*]{4})(?=[\*\d])/g, '$1 ') + ' ' + last;
-  		} else {
-  			return card;
-  		}
-  	} else {
-  		return card;
-  	}
+    if (typeof card == 'string') {
+      if (card.length === 16) {
+        return card.replace(/([\d\*]{4})(?=[\*\d])/g, '$1 ');
+      } else if (card.length === 19) {
+        var i = card.lastIndexOf('*');
+        var last = card.substr(i + 1, card.lenght);
+        card = card.substr(0, i + 1);
+        return card.replace(/([\d\*]{4})(?=[\*\d])/g, '$1 ') + ' ' + last;
+      } else {
+        return card;
+      }
+    } else {
+      return card;
+    }
   }
 
 //==================== Number ==================== //
@@ -117,23 +124,23 @@
    * @return {Number}      [数值A+数值B]
    */
   function accAdd(num1, num2) {
-      var r1, r2, m;
+    var r1, r2, m;
 
-      try {
-          r1 = num1.toString().split('.')[1].length;
-      } catch (e) {
-          r1 = 0;
-      }
+    try {
+      r1 = num1.toString().split('.')[1].length;
+    } catch (e) {
+      r1 = 0;
+    }
 
-      try {
-          r2 = num2.toString().split(".")[1].length;
-      } catch (e) {
-          r2 = 0;
-      }
+    try {
+      r2 = num2.toString().split(".")[1].length;
+    } catch (e) {
+      r2 = 0;
+    }
 
-      m = Math.pow(10, Math.max(r1, r2));
+    m = Math.pow(10, Math.max(r1, r2));
 
-      return Math.round(num1 * m + num2 * m) / m;
+    return Math.round(num1 * m + num2 * m) / m;
   }
 
   /**
@@ -143,24 +150,24 @@
    * @return {Number}      [数值A-数值B]
    */
   function accSub(num1, num2) {
-      var r1, r2, m;
+    var r1, r2, m;
 
-      try {
-          r1 = num1.toString().split('.')[1].length;
-      } catch (e) {
-          r1 = 0;
-      }
+    try {
+      r1 = num1.toString().split('.')[1].length;
+    } catch (e) {
+      r1 = 0;
+    }
 
-      try {
-          r2 = num2.toString().split(".")[1].length;
-      } catch (e) {
-          r2 = 0;
-      }
+    try {
+      r2 = num2.toString().split(".")[1].length;
+    } catch (e) {
+      r2 = 0;
+    }
 
-      m = Math.pow(10, Math.max(r1, r2));
-      n = (r1 >= r2) ? r1 : r2;
+    m = Math.pow(10, Math.max(r1, r2));
+    n = (r1 >= r2) ? r1 : r2;
 
-      return (Math.round(num1 * m - num2 * m) / m).toFixed(n);
+    return (Math.round(num1 * m - num2 * m) / m).toFixed(n);
   }
 
   /**
@@ -170,24 +177,24 @@
    * @return {Number}      [数值A/数值B]
    */
   function accDiv(num1, num2) {
-      var t1, t2, r1, r2;
+    var t1, t2, r1, r2;
 
-      try {
-          t1 = num1.toString().split('.')[1].length;
-      } catch (e) {
-          t1 = 0;
-      }
+    try {
+      t1 = num1.toString().split('.')[1].length;
+    } catch (e) {
+      t1 = 0;
+    }
 
-      try {
-          t2 = num2.toString().split(".")[1].length;
-      } catch (e) {
-          t2 = 0;
-      }
+    try {
+      t2 = num2.toString().split(".")[1].length;
+    } catch (e) {
+      t2 = 0;
+    }
 
-      r1 = Number(num1.toString().replace(".", ""));
-      r2 = Number(num2.toString().replace(".", ""));
+    r1 = Number(num1.toString().replace(".", ""));
+    r2 = Number(num2.toString().replace(".", ""));
 
-      return (r1 / r2) * Math.pow(10, t2 - t1);
+    return (r1 / r2) * Math.pow(10, t2 - t1);
   }
 
   /**
@@ -197,19 +204,19 @@
    * @return {Number}      [数值A*数值B]
    */
   function accMul(num1, num2) {
-      var m = 0,
-          s1 = num1.toString(),
-          s2 = num2.toString();
+    var m = 0,
+    s1 = num1.toString(),
+    s2 = num2.toString();
 
-      try {
-          m += s1.split(".")[1].length;
-      } catch (e) {};
+    try {
+      m += s1.split(".")[1].length;
+    } catch (e) {};
 
-      try {
-          m += s2.split(".")[1].length;
-      } catch (e) {};
+    try {
+      m += s2.split(".")[1].length;
+    } catch (e) {};
 
-      return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+    return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
   }
 
 //==================== Object ==================== //
