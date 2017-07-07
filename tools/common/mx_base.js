@@ -133,7 +133,7 @@
     }
 
     try {
-      r2 = num2.toString().split(".")[1].length;
+      r2 = num2.toString().split('.')[1].length;
     } catch (e) {
       r2 = 0;
     }
@@ -159,7 +159,7 @@
     }
 
     try {
-      r2 = num2.toString().split(".")[1].length;
+      r2 = num2.toString().split('.')[1].length;
     } catch (e) {
       r2 = 0;
     }
@@ -186,13 +186,13 @@
     }
 
     try {
-      t2 = num2.toString().split(".")[1].length;
+      t2 = num2.toString().split('.')[1].length;
     } catch (e) {
       t2 = 0;
     }
 
-    r1 = Number(num1.toString().replace(".", ""));
-    r2 = Number(num2.toString().replace(".", ""));
+    r1 = Number(num1.toString().replace('.', ''));
+    r2 = Number(num2.toString().replace('.', ''));
 
     return (r1 / r2) * Math.pow(10, t2 - t1);
   }
@@ -209,14 +209,14 @@
     s2 = num2.toString();
 
     try {
-      m += s1.split(".")[1].length;
+      m += s1.split('.')[1].length;
     } catch (e) {};
 
     try {
-      m += s2.split(".")[1].length;
+      m += s2.split('.')[1].length;
     } catch (e) {};
 
-    return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m);
+    return Number(s1.replace('.', '')) * Number(s2.replace('.', '')) / Math.pow(10, m);
   }
 
 //==================== Object ==================== //
