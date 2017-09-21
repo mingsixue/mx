@@ -357,3 +357,16 @@
       document.cookie = key + ' = ' + '1' + ' ;expires = ' + oDate;
     }
   }
+
+  //==================== DOM ==================== //
+  /**
+   * [getStyle 获取属性样式]
+   * @param  {Object} obj  [目标对象]
+   * @param  {String} attr [属性名]
+   * @return {String | Number}      [属性值]
+   */
+  function getStyle(obj, attr) {
+    //IE7/IE8浏览器 obj.currentStyle[attr]
+    //标准浏览器 getComputedStyle(obj)[attr]
+    return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+  }
