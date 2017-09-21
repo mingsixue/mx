@@ -360,7 +360,7 @@
 
   //==================== DOM ==================== //
   /**
-   * [getStyle 获取属性样式]
+   * [getStyle 根据属性获取浏览器计算后样式]
    * @param  {Object} obj  [目标对象]
    * @param  {String} attr [属性名]
    * @return {String | Number}      [属性值]
