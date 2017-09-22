@@ -219,6 +219,35 @@
     return Number(s1.replace('.', '')) * Number(s2.replace('.', '')) / Math.pow(10, m);
   }
 
+  /**
+   * [checkNumber 检测是否是数字，整数]
+   * @param  {String} str [字符串]
+   * @return {Boolean}     [是true 否false]
+   */
+  function checkNumber(str) {
+    var n = 0;
+
+    if (!str) {
+      return false;
+    }
+
+    if (typeof str === 'number') {
+      str = str + '';
+    }
+
+    if (typeof str !== 'string') {
+      return false;
+    }
+
+    for (var i = 0; i < str.length; i++) {
+      n = str.charCodeAt(i);
+      if (n < 48 || n > 57) { /*0-9数字在编码中为48到57之间*/
+        return false;
+      }
+    }
+    return true;
+  }
+
 //==================== Object ==================== //
 
 
