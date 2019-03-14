@@ -343,8 +343,8 @@ function strictIdNumber(val) {
 
 /**
 * [JS数据类型判断]
-* @param  {[string|number|object|array|regexp|null|undefined]} n
-* @return {[string]}   [string|number|function|undefined|[object Null]|[object Object]|[object Array]|[object Date]|[object RegExp]]
+* @param  {[string|number|boolean|object|array|regexp|null|undefined]} n
+* @return {[string]}   [string|number|boolean|function|undefined|[object Null]|[object Object]|[object Array]|[object Date]|[object RegExp]]
 */
 function typeDetection(n) {
     if (typeof n === 'object') {
