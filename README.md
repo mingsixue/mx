@@ -1,2 +1,2 @@
 # mx
-mx
+MX Common JavaScript Function.

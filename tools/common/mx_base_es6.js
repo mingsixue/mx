@@ -12,16 +12,16 @@
 
 //==================== Object ==================== //
 /**
- * [constantize 对象彻底冻结]
- * @param  {Object} obj [description]
- */
+* [constantize 对象彻底冻结]
+* @param  {Object} obj [description]
+*/
 constantize = (obj) => {
-  Object.freeze(obj);
-  Object.keys(obj).forEach( (key, i) => {
-    if ( typeof obj[key] === 'object' ) {
-      constantize( obj[key] );
-    }
-  });
+    Object.freeze(obj);
+    Object.keys(obj).forEach( (key, i) => {
+        if ( typeof obj[key] === 'object' ) {
+            constantize( obj[key] );
+        }
+    });
 }
 
 //==================== Array ==================== //

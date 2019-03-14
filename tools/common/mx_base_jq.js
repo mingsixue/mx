@@ -15,22 +15,30 @@
  */
 function substring(str, len, flow) {
     str = $.trim(str);
+
     if (!str) return '';
+
     str = str.toString();
+
     var newStr = '',
         strLength = str.replace(/[^\x00-\xff]/g, '**').length,
         flow = typeof(flow) == 'undefined' ? '…' : flow;
+
     if (strLength <= len + (strLength % 2 == 0 ? 2 : 1)) return str;
+
     for (var i = 0, newLength = 0, singleChar; i < strLength; i++) {
         singleChar = str.charAt(i).toString();
+
         if (singleChar.match(/[^\x00-\xff]/g) != null) newLength += 2;
         else newLength++;
 
         if (newLength > len) break;
+
         newStr += singleChar;
     }
 
     if (strLength > len) newStr = $.trim(newStr) + flow;
+    
     return newStr;
 }
 
@@ -38,13 +46,14 @@ function substring(str, len, flow) {
 
 //==================== Object ==================== //
 function serializeObject($form) {
-  var arr = $form.serializeArray(),
-      obj = {};
+    var arr = $form.serializeArray(),
+        obj = {};
 
-  $.each(arr, function(index, param) {
-      obj[param.name] = param.value || '';
-  });
-  return obj;
+    $.each(arr, function(index, param) {
+        obj[param.name] = param.value || '';
+    });
+
+    return obj;
 }
 
 //==================== Array ==================== //
